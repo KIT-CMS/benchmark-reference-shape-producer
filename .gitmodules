@@ -1,0 +1,9 @@
+[submodule "shape-producer"]
+	path = shape-producer
+	url = https://www.github.com/KIT-CMS/shape-producer
+[submodule "Dumbledraw"]
+	path = Dumbledraw
+	url = https://www.github.com/KIT-CMS/Dumbledraw
+[submodule "datasets"]
+	path = datasets
+	url = https://github.com/KIT-CMS/datasets
