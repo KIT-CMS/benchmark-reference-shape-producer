@@ -152,7 +152,6 @@ def main(info):
     data_norm = plot.subplot(0).get_hist("data_obs").Integral()
     plot.subplot(0).get_hist("data_obs").GetXaxis().SetMaxDigits(4)
     plot.subplot(0).setGraphStyle("data_obs", "e0")
-    plot.subplot(0).setGraphStyle("data_obs", "e0")
 
     # get signal histograms
     plot_idx_to_add_signal = [0,2] if args.linear else [1,2]
@@ -257,28 +256,15 @@ def main(info):
         plot.subplot(2).changeXLabels(["0.2", "0.4", "0.6", "0.8", "1.0"])
 
     # draw subplots. Argument contains names of objects to be drawn in corresponding order.
-    if "mm" not in channel:
-        procs_to_draw = ["stack", "total_bkg", "ggH", "ggH_top", "qqH", "qqH_top", "VH", "VH_top", "ttH", "ttH_top", "HWW", "HWW_top", "data_obs"] if args.linear else ["stack", "total_bkg", "data_obs"]
-        plot.subplot(0).Draw(procs_to_draw)
-        if args.linear != True:
-            plot.subplot(1).Draw([
-                "stack", "total_bkg", "ggH", "ggH_top", "qqH", "qqH_top",
-                "VH", "VH_top", "ttH", "ttH_top", "HWW", "HWW_top", "data_obs"
-            ])
-        plot.subplot(2).Draw([
-            "total_bkg", "bkg_ggH", "bkg_ggH_top", "bkg_qqH",
-            "bkg_qqH_top", "data_obs"
+    procs_to_draw = ["stack", "total_bkg", "data_obs"] if args.linear else ["stack", "total_bkg", "data_obs"]
+    plot.subplot(0).Draw(procs_to_draw)
+    if args.linear != True:
+        plot.subplot(1).Draw([
+            "stack", "total_bkg","data_obs"
         ])
-    else:
-        procs_to_draw = ["stack", "total_bkg", "data_obs"] if args.linear else ["stack", "total_bkg", "data_obs"]
-        plot.subplot(0).Draw(procs_to_draw)
-        if args.linear != True:
-            plot.subplot(1).Draw([
-                "stack", "total_bkg","data_obs"
-            ])
-        plot.subplot(2).Draw([
-            "total_bkg", "data_obs"
-        ])
+    plot.subplot(2).Draw([
+        "total_bkg", "data_obs"
+    ])
 
 
     # create legends
